@@ -2,11 +2,11 @@ program := app
 sources := app.c
 libraries := -lmodule1 -lmodule2
 
-lib_dirs := ../../lib/module1 ../../lib/module2
+lib_dirs := $(BIN)
 vpath %.a $(lib_dirs)
 
-all: $(program)
+all: $(BIN)/$(program)
 
 include ../../common.mk
 
-$(program): $(objects) $(libraries)
+$(BIN)/$(program): $(BIN)/$(objects) $(libraries)

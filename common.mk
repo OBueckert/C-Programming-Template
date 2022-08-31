@@ -7,11 +7,14 @@ CPPFLAGS += $(addprefix -I ,$(include_dirs))
 vpath %.h $(include_dirs)
 
 .PHONY: library
-library: $(library)
+library: $(BIN)/$(library)
 
-$(library): $(objects)
+$(BIN)/$(library): $(BIN)/$(objects)
 	$(AR) $(ARFLAGS) $@ $^
+
+$(BIN)/$(objects): $(sources)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $^ -o $@
 
 .PHONY: clean
 clean:
-	$(RM) $(objects) $(program) $(library) $(extra_clean)
+	$(RM) $(BIN)/*

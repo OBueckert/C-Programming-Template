@@ -4,6 +4,9 @@ lib_module1 := lib/module1
 lib_module2 := lib/module2
 libraries := $(lib_module1) $(lib_module2)
 
+BIN = $(shell pwd)/bin
+export BIN
+
 .PHONY: all $(app) $(libraries)
 all: $(app)
 
